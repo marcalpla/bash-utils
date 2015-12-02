@@ -32,7 +32,7 @@ for arg in "$@"; do
   fi
 done
 
-echo aws emr create-cluster \
+aws emr create-cluster \
 --name $CLUSTER_NAME \
 --release-label emr-4.2.0 \
 --instance-type $INSTANCE_TYPE \
