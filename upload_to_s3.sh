@@ -1,5 +1,5 @@
 #!/bin/bash
-# Upload files to AWS S3 bucket
+# Upload files to AWS S3 bucket using curl
 
 S3_KEY=$1
 S3_SECRET=$2
