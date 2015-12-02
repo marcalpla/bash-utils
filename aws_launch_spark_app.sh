@@ -27,12 +27,12 @@ for arg in "$@"; do
     done
 
     step="$step_class,$step_class_jar$step_class_params"
-    step_name=${step/,*[a-Z],/,}
+    step_name="$step_class$step_class_params"
     STEPS+="Type=Spark,Name=${step_name//,/},Args=[--deploy-mode,cluster,--master,yarn-cluster,--class,$step] "
   fi
 done
 
-aws emr create-cluster \
+echo aws emr create-cluster \
 --name $CLUSTER_NAME \
 --release-label emr-4.2.0 \
 --instance-type $INSTANCE_TYPE \
