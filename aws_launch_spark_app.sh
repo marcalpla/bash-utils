@@ -1,11 +1,12 @@
 #!/bin/bash
 # Launch AWS EMR Spark Application using aws cli
-# Usage: ./aws_launch_spark_app.sh CLUSTER_NAME INSTANCE_TYPE INSTANCE_COUNT LOG_URI [-s step_class step_class_jar [step_class_params]...]...
+# Usage: ./aws_launch_spark_app.sh CLUSTER_NAME INSTANCE_TYPE INSTANCE_COUNT LOG_URI CONFIG_FILE [-s step_class step_class_jar [step_class_params]...]...
 
 CLUSTER_NAME=$1
 INSTANCE_TYPE=$2
 INSTANCE_COUNT=$3
 LOG_URI=$4
+CONFIG_FILE=$5
 
 STEPS=""
 
@@ -40,5 +41,6 @@ aws emr create-cluster \
 --ec2-attributes KeyName=emndata \
 --applications Name=Spark \
 --log-uri $LOG_URI \
+--configurations $CONFIG_FILE \
 --steps $STEPS\
 --auto-terminate
