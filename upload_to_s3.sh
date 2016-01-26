@@ -1,6 +1,6 @@
 #!/bin/bash
 # Upload files to AWS S3 bucket using curl
-# Usage: ./upload_to_s3.sh S3_KEY S3_SECRET S3_BUCKET S3_PATH LOCAL_FULLPATH
+# Usage: ./upload_to_s3.sh S3_KEY S3_SECRET S3_BUCKET S3_PATH LOCAL_FULLPATH_PATTERN
 
 S3_KEY=$1
 S3_SECRET=$2
