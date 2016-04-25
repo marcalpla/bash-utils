@@ -1,7 +1,7 @@
 #!/bin/bash
 # Simple script to grep logs
 
-PATTERN=exception
+PATTERN=exception\\\|"not exist" # Search 'exception' or 'not exist'
 PREV_LINES=5
 NEXT_LINES=5
 
