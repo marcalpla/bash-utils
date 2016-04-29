@@ -28,8 +28,20 @@ for arg in "$@"; do
     done
 
     step="$step_class,$step_class_jar$step_class_params"
+
+    # Build the step name
+    # Include step class params with length < 20
+    char_class="[a-Z0-9\/]"
+    for i in {2..20}; do
+      char_class_rep+=$char_class
+    done
+    shopt -s extglob  # Turn on extended pattern support
+    step_class_params=${step_class_params//$char_class_rep+($char_class)/}
+    step_class_params=${step_class_params//,/}
+    # Include step class
     step_name="$step_class$step_class_params"
-    STEPS+="Type=Spark,Name=${step_name//,/},Args=[--deploy-mode,cluster,--master,yarn-cluster,--class,$step] "
+
+    STEPS+="Type=Spark,Name=$step_name,Args=[--deploy-mode,cluster,--master,yarn-cluster,--class,$step] "
   fi
 done
 
